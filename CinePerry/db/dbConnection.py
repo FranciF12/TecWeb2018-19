@@ -353,4 +353,135 @@ class ConnectionClass(object):
                 cursor.close()
                 conn.close()
                 print("MySQL connection is closed")
+   
+###################################################################
+#                         PERSON TABLE                            #
+###################################################################
+
+    """INSERIMENTO VALORE PERSONA IN PERSONA
+       Inserimento del valore di Persona nel database Registrazione iniziale nel Database
+       in questa funzione verranno registarti i dati che rappresentano la persona utente ma anche
+       l'amministratore """  # OK
+
+    def insertvalueperson(self, name, surname, email, password, phone, typePerson):
+
+        # now to create a query for inserting value
+        query = "INSERT INTO person(name, surname, email, password, phone, typePerson) VALUES (%s,%s,%s,%s,%s,%s)"
+        args = (name, surname, email, password, phone, typePerson,)
+
+        try:
+            conn = mysql.connector.connect(host='localhost',
+                                           database='BiglietteriaCinema',
+                                           user='root',
+                                           password='')
+            cursor = conn.cursor()
+            cursor.execute(query, args)
+            conn.commit()
+            print("Record inserted successfully into Person table")
+
+        except mysql.connector.Error as error:
+            conn.rollback()
+            print(f"Failed to insert into MySQL table {error}")
+
+        finally:
+            # closing database connection
+            if conn.is_connected():
+                cursor.close()
+                conn.close()
+                print("MySQL connection is closed")
+
+    """REALIZZAZIONE DEL LOGIN PER L'AUTENTICAZIONE DELLA PERSONA
+       Realizzazione di una funzione per il login
+       della persona, differenza tra admin e utente normale """  # OK
+
+    def loginperson(self, email, passwd):
+
+        query = "SELECT name,email,password FROM person WHERE email = %s AND password = %s "
+        args = (email, passwd,)
+
+        try:
+            conn = mysql.connector.connect(host='localhost',
+                                           database='BiglietteriaCinema',
+                                           user='root',
+                                           password='')
+
+            cursor = conn.cursor()
+            cursor.execute(query, args)
+
+            myresult = cursor.fetchall()
+            print("Logged on")
+            for x in myresult:
+                print(x)
+
+        except Error as error:
+            print(error)
+
+        finally:
+            if conn.is_connected():
+                cursor.close()
+                conn.close()
+                print("MySQL connection is closed")
+        return myresult
+
+    # function for selecting type person [ADMIN or USER]      #OK
+    def selecTypeP(self, email, passwd):
+        query = "SELECT typePerson FROM person WHERE email = %s AND password= %s"
+        args = (email, passwd,)
+
+        try:
+            conn = mysql.connector.connect(host='localhost',
+                                           database='BiglietteriaCinema',
+                                           user='root',
+                                           password='')
+
+            cursor = conn.cursor()
+            cursor.execute(query, args)
+
+            myresult = cursor.fetchall()
+
+            for x in myresult:
+                print(x)
+
+        except Error as error:
+            print(error)
+
+        finally:
+            if conn.is_connected():
+                cursor.close()
+                conn.close()
+                print("MySQL connection is closed")
+        return myresult
+
+    """ funzione che mi permette di selezionare il codice dell'utente che viene usato per
+        attribuirlo al ticket """  # OK
+
+    def selectcodP(self, email):
+
+        query = "SELECT codPerson FROM person WHERE email = %s"
+        args = (email,)
+
+        try:
+            conn = mysql.connector.connect(host='localhost',
+                                           database='BiglietteriaCinema',
+                                           user='root',
+                                           password='')
+
+            cursor = conn.cursor()
+            cursor.execute(query, args)
+
+            myresult = cursor.fetchall()
+            print("Person Code")
+            for x in myresult:
+                print(x)
+
+        except Error as error:
+            print(error)
+
+        finally:
+            cursor.close()
+            conn.close()
+            print("MySQL connection is closed")
+
+        return myresult
+
 
