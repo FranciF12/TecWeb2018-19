@@ -10,7 +10,7 @@
 # Mat:0124000796
 #
 # Database Creation
-
+#
 
 
 import mysql.connector
@@ -120,6 +120,7 @@ class ConnectionClass(object):
 
             cursor = conn.cursor()
             cursor.execute("SELECT * FROM film")
+            
 
             myresult = cursor.fetchall()
 
@@ -136,3 +137,5 @@ class ConnectionClass(object):
                 print("MySQL connection is closed")
 
         return myresult
+    
+    
