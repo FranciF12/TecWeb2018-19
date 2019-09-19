@@ -1,6 +1,6 @@
 
 #
-# CINEMA TICKET PROJECT
+# MOVIE TICKET PROJECT
 #
 # WEB TECHNOLOGIES
 #
@@ -10,7 +10,7 @@
 # Mat:0124000796
 #
 # Database Creation
-
+#
 
 
 import mysql.connector
