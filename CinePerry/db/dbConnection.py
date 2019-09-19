@@ -136,3 +136,66 @@ class ConnectionClass(object):
                 print("MySQL connection is closed")
 
         return myresult
+    
+    ###################################################################
+    #                       TYPE THEATER TABLE                        #
+    ###################################################################
+
+    """Function for inserting type of cinema in Type Theater """  # OK
+
+    def insert_typesala(self, tipoSpettacolo):
+
+        query = "INSERT INTO tiposala (tipoSpettacolo) VALUES (%s)"
+        args = (tipoSpettacolo,)
+
+        try:
+            conn = mysql.connector.connect(host='localhost',
+                                           database='BiglietteriaCinema',
+                                           user='root',
+                                           password='')
+
+            cursor = conn.cursor()
+            cursor.execute(query, args)
+            conn.commit()
+            print("Record inserted successfully into Type Theater table")
+
+        except mysql.connector.Error as error:
+            conn.rollback()
+            print(f"Failed to insert into MySQL table {error}")
+
+        finally:
+            if conn.is_connected():  # closing database connection.
+                cursor.close()
+                conn.close()
+                print("MySQL connection is closed")
+
+    """ Function for selecting all type of theater """        # OK
+    """ selezione tipo spettacolo nella tabella film"""
+
+    def selectalltypespett(self):
+        query = "SELECT * FROM tiposala"
+
+        try:
+            conn = mysql.connector.connect(host='localhost',
+                                           database='BiglietteriaCinema',
+                                           user='root',
+                                           password='')
+
+            cursor = conn.cursor()
+            cursor.execute(query)
+
+            myresult = cursor.fetchall()
+
+            for x in myresult:
+                print(x)
+
+        except Error as error:
+            print(error)
+
+        finally:
+            if conn.is_connected():  # closing database connection.
+                cursor.close()
+                conn.close()
+                print("MySQL connection is closed")
+
+        return myresult
