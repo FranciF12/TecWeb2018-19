@@ -612,36 +612,3 @@ class ConnectionClass(object):
 
         return myresult
     
-    ###################################################################
-    #                         PAYMENT TABLE                           #
-    ###################################################################
-    """Function for inserting payment in a table Payment """  # OK
-
-    def insert_value_payment(self, idcard, typep, owner, expiriondate, cvc, price, codp):
-
-        # now to create a query for inserting value
-        query = "INSERT INTO payment(idCard, typePayment, owner, expirionDate, CVC, price, codPerson)" \
-                " VALUES (%s,%s,%s,%s,%s,%s,%s)"
-        args = (idcard, typep, expiriondate, owner, cvc, price, codp,)
-
-        try:
-            conn = mysql.connector.connect(host='localhost',
-                                           database='BiglietteriaCinema',
-                                           user='root',
-                                           password='')
-            cursor = conn.cursor()
-            cursor.execute(query, args)
-            conn.commit()
-            print("Record inserted successfully into Person table")
-
-        except mysql.connector.Error as error:
-            conn.rollback()
-            print(f"Failed to insert into MySQL table {error}")
-
-        finally:
-            # closing database connection
-            if conn.is_connected():
-                cursor.close()
-                conn.close()
-                print("MySQL connection is closed")
-
