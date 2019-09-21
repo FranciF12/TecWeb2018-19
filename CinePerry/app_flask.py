@@ -127,4 +127,71 @@ def show_table_film():
 @app.route('/show_payment_card')
 def show_payment_card():
     type_pay = ["Credit Card", "Bancomat"]
-    return render_template("typePayment.html", type_pay=type_pay)  # type_p=type_p)
+    return render_template("typePayment.html", type_pay=type_pay)
+
+
+########################################################################################################################
+# for log out
+@app.route('/logout')
+def logout():
+    email = session.pop('email')
+    message = 'Bye ' + email + ' you are logged on!!!'
+    return render_template("index.html", message=message)
+
+
+########################################################################################################################
+# for logging
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    login = ConnectionClass()
+
+    if request.method == 'POST':
+        session['email'] = request.form['email']
+        password = request.form['password']
+
+        my_var = login.loginperson(session['email'], password)
+        y = login.selecTypeP(session['email'], password)
+        value = [y[0] for y in y]
+
+        # if not found user, rise an error message on html page
+        if not my_var:
+            error = "User don't registered, please control values or ---> Click SingUp"
+            return render_template("index.html", error=error)
+        # admin
+        if value[0] == "Admin":
+            return redirect(url_for('show_admin_page'))
+        else:  # or user
+            return redirect(url_for('show_user_page'))
+
+    return render_template('index.html')
+
+
+########################################################################################################################
+
+# for registration
+@app.route('/signup', methods=['POST', 'GET'])
+def signup():
+    reg = ConnectionClass()
+
+    if request.method == 'POST':
+        namep = request.form["namep"]
+        surname = request.form["surname"]
+        email = request.form['email']
+        passwd = request.form['passwd']
+        phone = request.form['phone']
+        type_p = request.form['type_p']
+
+        reg.insertvalueperson(namep, surname, email, passwd, phone, type_p)
+
+        return redirect(url_for('main'))  # redirect to login page
+    else:
+        error = "Registrarion error!!"
+        return render_template("registration.html", error=error)
+
+
+########################################################################################################################
+
+
+
+
+
