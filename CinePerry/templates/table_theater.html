@@ -1,1 +1,39 @@
 <!-- Table theater -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Theater Table</title>
+    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
+</head>
+<body>
+
+<table class="darkTable">
+    <thead>
+    <tr>
+        <th>Name Theater</th>
+        <th>Type Theater</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Price</th>
+        <th>Seats</th>
+        <th>Film</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in value %} <!-- For each elemntes shows row from database -->
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+        <td>{{row[2]}}</td>
+        <td>{{row[3]}}</td>
+        <td>{{row[4]}}</td>
+        <td>{{row[5]}}</td>
+        <td>{{row[6]}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<!-- <button onclick="window.location.href='show_admin_page'">Return Back</button> Using javascript event window.location.href-->
+</body>
+</html>
