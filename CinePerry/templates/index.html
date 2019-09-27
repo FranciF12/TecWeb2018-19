@@ -1,1 +1,93 @@
 <!--INDEX -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
+</head>
+<body>
+
+    <!-- Sidebar with image for lef image-->
+    <nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width:40%">
+        <div class="bgimg"></div>
+    </nav>
+
+    <!-- Hidden Sidebar (reveals when clicked on menu icon)-->
+    <nav class="w3-sidebar w3-black w3-animate-right w3-xxlarge" id="mySidebar">
+        <a href="javascript:void(0)" onclick="closeNav()" class="w3-button w3-black w3-xxxlarge w3-display-topright navClass">
+            <i class="fa fa-remove"></i>
+        </a>
+        <div class="w3-bar-block w3-center">
+            <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Home</a>
+            <a href="showSignUp" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Registration</a>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="w3-main w3-padding-large myPage">
+
+        <!-- Menu icon to open sidebar -->
+        <span class="w3-button w3-top w3-white w3-xxlarge w3-text-grey w3-hover-text-black" style="width:auto;right:0;" onclick="openNav()"><i class="fa fa-bars"></i></span>
+
+        <!-- Header -->
+        <header class="w3-container w3-center"  id="home">
+            <h1 class="w3-jumbo"><b>CinePerry</b></h1>
+            <blockquote class="quotes" cite="https://www.goodreads.com/quotes/9029173-no-form-of-art-goes-beyond-ordinary-consciousness-as-film">
+                No form of art goes beyond ordinary consciousness as film does, straight to our emotions,
+                deep into the twilight room of the soul.<br/>(Ingmar Bergman)
+            </blockquote>
+        </header>
+
+        <h3 style="color: darkgrey">{{ message }}</h3>
+
+        <div class="button_right">
+            <span>Please click here to</span>
+            <button class="myButton" onclick="window.location.href='showSignUp'">Sign Up</button> <!--Using javascript event window.location.href-->
+        </div>
+
+    <!-- Contact Section -->
+    <div class="w3-padding-32 w3-content w3-text-grey contact" id="contact" >
+    <hr class="w3-opacity">
+    <h1>Login</h1>
+            <form action="/login"  method="post">
+                <label for="email">Email</label>
+                <input class="w3-input w3-padding-16 w3-border" type="email"  required name="email" id="email">
+                <label for="passwd">Password</label>
+                <input class="w3-input w3-padding-16 w3-border" type="password"  required name="password" id="passwd">
+
+                <p class="error">{{ error }}</p> <!-- rise exception -->
+
+                <button class="myButton" type="submit"> Log In</button>
+            </form>
+            <!-- Image of location/map -->
+            <img src="../static/images/movie.jpg" class="w3-image w3-greyscale imageClass"alt="image-movie">
+            <!-- End Contact Section -->
+        </div>
+        <!-- Footer -->
+        <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge footerDim" >
+            <p class="w3-medium">Created by Francesco Perrotta</p>
+            <!-- End footer -->
+        </footer><!-- END PAGE CONTENT -->
+    </div>
+
+    <script src="../static/js/js.js"></script>
+
+</body>
+</html>
+
+<!-- Hidden Sidebar (reveals when clicked on menu icon) slide bar on the right
+<nav class="w3-sidebar w3-black w3-animate-right w3-xxlarge" id="mySidebar">
+    <a href="javascript:void(0)" onclick="closeNav()" class="w3-button w3-black w3-xxxlarge w3-display-topright" id="javaS"> </a>
+    <i class="fa fa-remove"></i>
+    </a>
+
+    <div class="w3-bar-block w3-center">
+        <a href="index.html" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Home</a>
+        <a href="registration.html" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Registration</a>
+        <a href="#contact" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Films</a>
+        <a href="#contact" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Theaters</a>
+    </div>
+</nav> -->
