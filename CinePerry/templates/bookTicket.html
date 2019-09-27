@@ -1,1 +1,119 @@
 <!-- bookTicket -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Ticket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
+</head>
+<body>
+
+    <!-- Sidebar with image for lef image-->
+    <nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width:40%">
+        <div class="bgimg"></div>
+    </nav>
+
+    <div class="w3-main w3-padding-large myPage">
+        <!-- Header -->
+
+        <header class="w3-container w3-center"  id="home">
+            <h1 class="w3-jumbo"><b>CinePerry</b></h1>
+            <blockquote class="quotes" cite="https://www.goodreads.com/quotes/9029173-no-form-of-art-goes-beyond-ordinary-consciousness-as-film">
+                No form of art goes beyond ordinary consciousness as film does, straight to our emotions,
+                deep into the twilight room of the soul.<br/>(Ingmar Bergman)
+            </blockquote>
+        </header>
+
+        <div class="button_right">
+            <button class="myButton" id="reload" onclick="window.location.href='show_booking'">Reload</button> <!--Using javascript event window.location.href-->
+            <button class="myButton" onclick="window.location.href='show_user_page'">Return Back</button> <!--Using javascript event window.location.href-->
+        </div>
+
+            <div class="w3-padding-32 w3-content w3-text-grey contact" id="contact" >
+                <hr class="w3-opacity">
+                <h1>Booking Ticket</h1>
+                 <h2><p class="error">{{ error }}</p></h2>
+
+                <form method="post" action="/enterValueBook">
+                    <label>Choose Your Film</label>
+                    <select name="namef" class="w3-input w3-padding-16 w3-border">
+                        {% for o in film %}
+                        <option value= "{{ o[0] }}" SELECTED>{{ o[0] }}</option>"
+                        {% endfor %}
+                    </select>
+                    <br />
+                    <label>Name of Sala</label>
+                    <select name="names" class="w3-input w3-padding-16 w3-border">
+                        {% for i in sala %}
+                        <option value= "{{ i[0] }}" SELECTED>{{ i[0] }}</option>"
+                        {% endfor %}
+                    </select>
+                    <br />
+                    <label>Name</label>
+                    <input class="w3-input w3-padding-16 w3-border" type="text" name="namep" required>
+                    <br />
+                    <label>Surname</label>
+                    <input class="w3-input w3-padding-16 w3-border" type="text" name="surname" required>
+                    <br />
+                    <label>Email</label>
+                    <input class="w3-input w3-padding-16 w3-border" type="text" name="email" required>
+                    <br />
+                    <label>Date</label>
+                    <select name="date" class="w3-input w3-padding-16 w3-border">
+                        {% for x in dateS %}
+                        <option value= "{{ x[2] }}" SELECTED>{{ x[2] }}</option>"
+                        {% endfor %}
+                    </select>
+                    <br />
+                    <label>Time</label>
+                    <select name="time" class="w3-input w3-padding-16 w3-border">
+                        {% for y in time %}
+                        <option value= "{{ y[3] }}" SELECTED>{{ y[3] }}</option>"
+                        {% endfor %}
+                    </select>
+                    <br />
+                    <label>Price €</label>
+                    <select name="price" class="w3-input w3-padding-16 w3-border">
+                        {% for z in price %}
+                        <option value= "{{ z[4] }}" SELECTED>{{ z[4] }}</option>"
+                        {% endfor %}1
+                    </select>
+                    <br />
+                    <label>Number Tickets</label>
+                    <input class="w3-input w3-padding-16 w3-border" type="number" name="ntickets" value="0" required>
+                    <br />
+
+                     <label>Type Theater</label>
+                    <select name="types" class="w3-input w3-padding-16 w3-border">
+                        {% for z in types %}
+                        <option value= "{{ z[0] }}" SELECTED>{{ z[0] }}</option>"
+                        {% endfor %}
+                    </select>
+
+                    <label>Glasses Numbers</label>
+                    <input class="w3-input w3-padding-16 w3-border" type="number" name="nglasses" value="0" required>
+                    <br />
+                    <label>Type Payment</label>
+                    <select name="payment" class="w3-input w3-padding-16 w3-border">
+                        {% for z in payment %}
+                        <option value= "{{ z }}" SELECTED>{{ z }}</option>"
+                        {% endfor %}
+                    </select>
+                    <br />
+                    <br />
+                    <input class= "myButton" type="submit" value="Buy" />
+                </form>
+                <!-- Image of location/map -->
+            <img src="../static/images/book-now-balance-spa.png" class="w3-image w3-greyscale imageClass" alt="image-movie">
+            <!-- End Contact Section -->
+        </div>
+        <!-- Footer -->
+        <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge footerDim" >
+            <p class="w3-medium">Created by Francesco Perrotta</p>
+            <!-- End footer -->
+        </footer><!-- END PAGE CONTENT -->
+        </div>
+    </div>
+</body>
+</html>
