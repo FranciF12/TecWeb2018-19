@@ -1,1 +1,82 @@
 <!-- User Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
+
+</head>
+<body>
+    <!-- Sidebar with image for lef image-->
+    <nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width:40%">
+        <div class="bgimg"></div>
+    </nav>
+    <!-- Page Content -->
+    <div class="w3-main w3-padding-large myPage">
+        <!-- Header -->
+        <header class="w3-container w3-center"  id="home">
+            <h1 class="w3-jumbo"><b>CinePerry</b></h1>
+            <blockquote class="quotes" cite="https://www.goodreads.com/quotes/9029173-no-form-of-art-goes-beyond-ordinary-consciousness-as-film">
+                No form of art goes beyond ordinary consciousness as film does, straight to our emotions,
+                deep into the twilight room of the soul. <br/>(Ingmar Bergman)
+            </blockquote>
+        </header>
+
+        <div class="button_right">
+            <span>Please click here to</span>
+            <button class="myButton" onclick="window.location.href='logout'">Sign Out</button> <!--Using javascript event window.location.href-->
+        </div>
+
+        <!-- Contact Section -->
+        <div class="w3-padding-32 w3-content w3-text-grey contact" id="contact" >
+            <hr class="w3-opacity">
+            <h1 class="title">Book Tickets</h1>
+            <br />
+            <div class="w3-center">
+                <!-- <button class="myButton" onclick="window.location.href='show_table_film'">Show Films</button> --><!--Using javascript event window.location.href-->
+                <button class="myButton" onclick="showFilm()">FILM</button> <!--Using javascript event window.location.href-->
+
+                <br />
+                <br />
+                <!--   <button class="myButton" onclick="window.location.href='show_table_theater'" formtarget="_blank">Show Theater</button> --><!--Using javascript event window.location.href-->
+                <button class="myButton" onclick="showTheater()">THEATER</button> <!--Using javascript event window.location.href-->
+                <br />
+                <br />
+                <button class="myButton" onclick="window.location.href='show_booking'">Book Ticket</button> <!--Using javascript event window.location.href-->
+            </div>
+            <!-- Image of location/map -->
+            <img src="../static/images/X7px.gif" class="w3-image w3-greyscale myimage" style="width:100%;margin:32px 0">
+        </div>
+        <!-- Footer -->
+        <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge footerDim" >
+            <p class="w3-medium">Created by Francesco Perrotta</p>
+            <!-- End footer -->
+        </footer><!-- END PAGE CONTENT -->
+        <!-- End Contact Section -->
+    </div> <!--end content -->
+
+
+    <script>
+        /** for popup window teather */
+        function showTheater(){
+            var w = 790;
+            var h = 200;
+            var l = Math.floor((screen.width-w)/2);
+            var t = Math.floor((screen.height-h)/2);
+            window.open("show_table_theater","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+        }
+
+
+        /** for popup window Film*/
+        function showFilm() {
+            var w = 790;
+            var h = 200;
+            var l = Math.floor((screen.width-w)/2);
+            var t = Math.floor((screen.height-h)/2);
+            window.open("show_table_film","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+        }
+    </script>
+</body>
+</html>

@@ -1,1 +1,81 @@
 <!-- Registration -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
+</head>
+<body>
+
+<!-- Sidebar with image for lef image-->
+<nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width:40%">
+    <div class="bgimg"></div>
+</nav>
+
+<!-- Page Content -->
+<div class="w3-main w3-padding-large myPage">
+
+    <!-- Header -->
+    <header class="w3-container w3-center"  id="home">
+        <h1 class="w3-jumbo"><b>CinePerry</b></h1>
+        <blockquote class="quotes" cite="https://www.goodreads.com/quotes/9029173-no-form-of-art-goes-beyond-ordinary-consciousness-as-film">
+            No form of art goes beyond ordinary consciousness as film does, straight to our emotions,
+            deep into the twilight room of the soul. <br/>(Ingmar Bergman)
+        </blockquote>
+    </header>
+
+    <div class="button_right">
+        <button class="myButton" id="reload" onclick="window.location.href='/'">Return Back</button> <!--Using javascript event window.location.href-->
+    </div>
+    <!-- Contact Section -->
+    <div class="w3-padding-32 w3-content w3-text-grey contact" id="contact" >
+        <hr class="w3-opacity">
+        <h1>Registration</h1>
+
+        <form action = "/signup" method = "post">
+            <label>Name</label>
+            <input  class="w3-input w3-padding-16 w3-border" type = "text" name = "namep" required/>
+            <br />
+
+            <label>Surname</label>
+            <input  class="w3-input w3-padding-16 w3-border" type = "text" name = "surname" required/>
+            <br />
+            <br />
+            <label>Email</label>
+            <input  class="w3-input w3-padding-16 w3-border"  type = "email" name = "email" required/>
+            <br />
+            <br />
+            <label>Password</label>
+            <input  class="w3-input w3-padding-16 w3-border" type = "password" name = "passwd" required/>
+            <br />
+            <br />
+            <label>Phone</label>
+            <input  class="w3-input w3-padding-16 w3-border" type = "text" name = "phone"/>
+            <br />
+            <br />
+            <label>Type Person</label>
+            <select name="type_p"  class="w3-input w3-padding-16 w3-border">
+                {% for o in type_p %}
+                <option value = "{{ o }}" SELECTED>{{ o }}</option>"
+                {% endfor %}
+            </select>
+            <br />
+            <br />
+            <button class="myButton" type="submit"> Register</button>
+        </form>
+        <!-- Image of location/map -->
+        <img src="../static/images/sala.png" class="w3-image w3-greyscale" style="width:100%;margin:32px 0">
+        <!-- End Contact Section -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge footerDim" >
+        <p class="w3-medium">Created by Francesco Perrotta</a></p>
+        <!-- End footer -->
+    </footer><!-- END PAGE CONTENT -->
+</div>
+</body>
+</html>
