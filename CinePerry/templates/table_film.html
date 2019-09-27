@@ -1,1 +1,32 @@
 <!-- Table Film -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Film Table</title>
+    <link rel="stylesheet"href="../static/css/main.css">
+</head>
+<body>
+
+    <table class="darkTable">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in valuef %} <!-- For each elemntes shows row from database -->
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+<!-- <button onclick="window.location.href='show_admin_page'">Return Back</button> Using javascript event window.location.href-->
+</body>
+</html>
