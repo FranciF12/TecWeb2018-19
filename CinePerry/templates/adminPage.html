@@ -1,1 +1,117 @@
 <!-- Admin Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Administration Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
+</head>
+<body>
+
+<!-- Sidebar with image for lef image-->
+<nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width:40%">
+    <div class="bgimg"></div>
+</nav>
+
+<!-- Page Content -->
+<div class="w3-main w3-padding-large myPage">
+    <div class="button_right">
+        <button class="myButton" onclick="window.location.href='logout'">Sign Out</button> <!--Using javascript event window.location.href-->
+    </div>
+    <!-- Header -->
+    <header class="w3-container w3-center"  id="home">
+        <h1 class="w3-jumbo"><b>CinePerry</b></h1>
+        <blockquote class="quotes" cite="https://www.goodreads.com/quotes/9029173-no-form-of-art-goes-beyond-ordinary-consciousness-as-film">
+            No form of art goes beyond ordinary consciousness as film does, straight to our emotions,
+            deep into the twilight room of the soul.<br/>(Ingmar Bergman)
+        </blockquote>
+
+    </header>
+    <!-- Section 1 insertin film into database -->
+    <div class="w3-padding-32 w3-content w3-text-grey contact" id="contact" >
+        <hr class="w3-opacity">
+        <br />
+        <div class="button_right">
+            <button class="myButton" onclick="showFilm()">Show Films</button> <!--Using javascript event window.location.href-->
+        </div>
+        <h1>Insert Film into Database</h1>
+        <form action = "/enterfilm" method = "post">
+            <label for="title">Title</label>
+            <input class="w3-input w3-padding-16 w3-border" type="text" name="title" id="title" required >
+            <br />
+            <label for="category">Category</label>
+            <input class="w3-input w3-padding-16 w3-border" type="text" name="category" id="category" required >
+            <br />
+            <label>Description</label>
+            <textarea class="w3-input w3-padding-16 w3-border" name="description" cols="20" rows="4" placeholder="Enter Description..." required ></textarea>
+            <br />
+
+            <p class="error">{{ error }}</p>
+            <button class="myButton" type="submit"> Enter Film</button>
+        </form>
+
+        <br />
+        <br />
+
+        <!--Section 2 inserting and updating theater, show theaters  -->
+        <fieldset><legend><h1>Insert and Update Theater</h1></legend>
+        <button class="myButton" onclick="window.location.href='show_sala'">Sala</button> <!--Using javascript event window.location.href-->
+        <button class="myButton" onclick="showTheater()">Show Theater</button> <!--Using javascript event window.location.href-->
+        <!-- <button onclick="window.location.href='show_table_theater'">Display Sala</button> Using javascript event window.location.href-->
+        </fieldset>
+        <br />
+        <br />
+        <!--Section 3-->
+        <fieldset><legend><h1>Report of the Theater</h1></legend>
+            <button class="myButton" onclick="window.location.href='show_report'">Report</button>
+           <!-- <p><a href="{{url_for('show_report')}}" target="_blank">Show Report</a></p> -->
+        </fieldset>
+        <br />
+        <br />
+
+        <!-- Contact Section -->
+        <legend><h1>Delete Film</h1></legend>
+        <form action="/deleteFilm" method="post">
+                <label for="deletf">Title Film</label>
+                <input class="w3-input w3-padding-16 w3-border" type="text" name="deletf" id="deletf" required>
+            <br />
+            <input class="myButton" type="submit" name="buttonDelete" value="Delete">
+        </form>
+        <!-- Image of location/map -->
+        <img src="../static/images/movie.jpg" class="w3-image w3-greyscale" style="width:100%;margin:32px 0">
+        <!-- End Contact Section -->
+    </div>
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge footerDim" >
+        <p class="w3-medium">Created by Francesco Perrotta</p>
+        <!-- End footer -->
+    </footer><!-- END PAGE CONTENT -->
+</div>
+&#123;% endif %&#125;
+&#123;% endblock %&#125;
+&#123;% endraw %&#125;
+    <p>You are not logged in</p>
+
+    <script>
+        /** for popup window teather */
+        function showTheater(){
+            var w = 790;
+            var h = 200;
+            var l = Math.floor((screen.width-w)/2);
+            var t = Math.floor((screen.height-h)/2);
+            window.open("show_table_theater","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+        }
+
+
+        /** for popup window Film*/
+        function showFilm() {
+            var w = 790;
+            var h = 200;
+            var l = Math.floor((screen.width-w)/2);
+            var t = Math.floor((screen.height-h)/2);
+            window.open("show_table_film","","width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+        }
+    </script>
+</body>
+</html>
