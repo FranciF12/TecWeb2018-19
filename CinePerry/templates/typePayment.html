@@ -1,1 +1,118 @@
 <!-- Payment -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
+</head>
+<body>
+    <!-- Sidebar with image for lef image-->
+    <nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width:40%">
+        <div class="bgimg"></div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="w3-main w3-padding-large myPage">
+
+        <!-- Header -->
+        <header class="w3-container w3-center"  id="home">
+            <h1 class="w3-jumbo"><b>CinePerry</b></h1>
+            <blockquote class="quotes" cite="https://www.goodreads.com/quotes/9029173-no-form-of-art-goes-beyond-ordinary-consciousness-as-film">
+                No form of art goes beyond ordinary consciousness as film does, straight to our emotions,
+                deep into the twilight room of the soul. <br/>(Ingmar Bergman)
+            </blockquote>
+        </header>
+
+        <!-- Contact Section -->
+        <div class="w3-padding-32 w3-content w3-text-grey contact" id="contact" >
+            <hr class="w3-opacity">
+
+            <h1>Payment</h1>
+            <form action="/value_payment_card" method="post">
+                <label>Enter your code card</label>
+                <input  class="w3-input w3-padding-16 w3-border" type="number" name="code_c" required>
+                <br />
+                <label>Choose your type Card</label>
+                <select name="card"  class="w3-input w3-padding-16 w3-border">
+                    <option value="Bancomat" SELECTED> Bancomat</option>"
+                    <option value="Credit Card" SELECTED> Credit Card</option>"
+                </select>
+                <br />
+                <label>Owner</label>
+                <input class="w3-input w3-padding-16 w3-border" type="text" name="owner" required>
+                <br />
+                <label>Email</label>
+                <input class="w3-input w3-padding-16 w3-border" type="email" name="email" required>
+                <br />
+                <label>Expirion Date</label>
+                <input class="w3-input w3-padding-16 w3-border" type="text" name="exp_date" required>
+                <br />
+                <label>CVC</label>
+                <input class="w3-input w3-padding-16 w3-border" type="number" name="cvc" required>
+                <br />
+                <label>Price €</label>
+                <input class="w3-input w3-padding-16 w3-border" type="text" name="tot_price" value={{tot_price}} >
+                <br />
+                <input type = "submit" value = "BUY" />
+
+                <input type="text" name="namef" value="{{namef}}" hidden>
+                <input type="text" name="names" value="{{names}}" hidden>
+                <input type="text" name="namep" value="{{namep}}" hidden>
+                <input type="text" name="surname" value="{{surname}}" hidden>
+                <input type="text" name="date" value="{{date}}" hidden>
+                <input type="text" name="time" value="{{time}}" hidden>
+                <input type="text" name="tot_price" value="{{tot_price}}" hidden>
+                <input type="text" name="ntickets" value="{{ntickets}}" hidden>
+                <input type="text" name="types" value="{{types}}" hidden>
+                <input type="text" name="nglasses" value="{{nglasses}}" hidden>
+                <input type="text" name="value" value="{{value}}" hidden>
+
+            </form>
+            <div>
+                {%  if day == 'Monday' or day == 'Tuesday' or day == 'Wednesday' or day == 'Thursday' %}
+
+                <h1>Reduct Ticket</h1>
+                <p> Title Film: {{ namef }}</p>
+                <p> Name Theater : {{ names }}</p>
+                <p> Name Person: {{ namep }}</p>
+                <p> Surname: {{ surname }}</p>
+                <p> Date: {{ date }}</p>
+                <p> Time: {{ time }}</p>
+                <p> Price: {{ tot_price }}</p>
+                <p> Number Tickets: {{ ntickets }}</p>
+                <p> Type Theater: {{ types }}</p>
+                <p> Number Glasses: {{ nglasses }}</p>
+                <p> Code Person: {{ value }}</p>
+
+                {% else %}
+                <h1>Full Ticket</h1>
+                <p> Title Film: {{ namef }}</p>
+                <p> Name Theater : {{ names }}</p>
+                <p> Name Person: {{ namep }}</p>
+                <p> Surname: {{ surname }}</p>
+                <p> Date: {{ date }}</p>
+                <p> Time: {{ time }}</p>
+                <p> Price: {{ tot_price }}</p>
+                <p> Number Tickets: {{ ntickets }}</p>
+                <p> Type Theater: {{ types }}</p>
+                <p> Number Glasses: {{ nglasses }}</p>
+                <p> Code Person: {{ value }}</p>
+
+                {% endif %}
+            </div>
+
+            <!-- Image of location/map -->
+            <img src="../static/images/cash-payment-icon-5.png" class="w3-image w3-greyscale" style="width:100%;margin:32px 0">
+            <!-- End Contact Section -->
+        </div>
+
+        <!-- Footer -->
+        <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge footerDim" >
+            <p class="w3-medium">Created by Francesco Perrotta</a></p>
+            <!-- End footer -->
+        </footer><!-- END PAGE CONTENT -->
+    </div>
+</body>
+</html>
