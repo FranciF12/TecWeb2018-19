@@ -1,1 +1,89 @@
 <!-- Update Sala -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Sala</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
+</head>
+<body>
+
+    <!-- Sidebar with image for lef image-->
+    <nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width:40%">
+        <div class="bgimg"></div>
+    </nav>
+
+    <!-- Hidden Sidebar (reveals when clicked on menu icon) slide bar on the right-->
+    <nav class="w3-sidebar w3-black w3-animate-right w3-xxlarge" id="mySidebar">
+        <a href="javascript:void(0)" onclick="closeNav()" class="w3-button w3-black w3-xxxlarge w3-display-topright" id="javaS"> </a>
+
+        <div class="w3-bar-block w3-center">
+            <a href="index.html" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Home</a>
+            <a href="registration.html" class="w3-bar-item w3-button w3-text-grey w3-hover-black" onclick="closeNav()">Registration</a>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="w3-main w3-padding-large myPage">
+
+        <!-- Header -->
+        <header class="w3-container w3-center"  id="home">
+
+            <h1 class="w3-jumbo"><b>CinePerry</b></h1>
+            <blockquote class="quotes" cite="https://www.goodreads.com/quotes/9029173-no-form-of-art-goes-beyond-ordinary-consciousness-as-film">
+                No form of art goes beyond ordinary consciousness as film does, straight to our emotions,
+                deep into the twilight room of the soul. <br/>(Ingmar Bergman)
+            </blockquote>
+        </header>
+
+        <div class="button_right">
+            <button class="myButton" onclick="window.location.href='show_sala'">Return Back</button> <!--Using javascript event window.location.href-->
+        </div>
+        <!-- Contact Section -->
+        <div class="w3-padding-32 w3-content w3-text-grey contact" id="contact" >
+            <hr class="w3-opacity">
+            <h1> Update Theater</h1>
+            <form action="/updateSala" method="post">
+
+                <label>Name of Sala</label>
+                <select name="names" class="w3-input w3-padding-16 w3-border">
+                    {% for i in sala %}
+                    <option value= "{{ i[0] }}" SELECTED>{{ i[0] }}</option>"
+                    {% endfor %}
+                </select>
+                <br />
+                <label>Type of Theater</label>
+                <input class="w3-input w3-padding-16 w3-border" type="text" name="typet" required>
+                <br />
+                <span>Date of Theater</span>
+                <input class="w3-input w3-padding-16 w3-border" type="text" name="date" required>
+                <br />
+                <label>Time of Theater</label>
+                <input class="w3-input w3-padding-16 w3-border" type="text" name="time" required>
+                <br />
+                <label>Price €</label>
+                <input class="w3-input w3-padding-16 w3-border" type="text" name="price" required>
+                <br />
+                 <label>Seats</label>
+                <input class="w3-input w3-padding-16 w3-border" type="text" name="seats" required>
+                <br />
+                <label>Choose Your Film</label>
+                <select name="namef" class="w3-input w3-padding-16 w3-border">
+                    {% for o in film %}
+                    <option value= "{{ o[0] }}" SELECTED>{{ o[0] }}</option>"
+                    {% endfor %}
+                </select>
+                <br />
+                <button class="myButton" type="submit">OK</button>
+            </form>
+
+        <!-- Footer -->
+        <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge footerDim" >
+            <p class="w3-medium">Created by Francesco Perrotta</a></p>
+            <!-- End footer -->
+        </footer><!-- END PAGE CONTENT -->
+        </div>
+    </div>
+</body>
+</html>
